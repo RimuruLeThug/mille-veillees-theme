@@ -4,7 +4,7 @@
   document.documentElement.lang="fr";
   var T={
     "Skip to content":"Aller au contenu","(plus tax)":"HT","Terms of Service":"Conditions générales","Terms of service":"Conditions générales","Privacy Policy":"Politique de confidentialité","Returns & FAQ":"Retours et FAQ","Powered by":"Propulsé par",
-    "Added to cart":"Ajouté au panier","Quantity:":"Quantité :","Cart Subtotal (":"Sous-total du panier (","View Cart":"Voir le panier","Checkout":"Commander","Add to Cart":"Ajouter au panier","Size:":"Taille :","Size":"Taille","Size guide":"Guide des tailles","Size Guide":"Guide des tailles","Color:":"Couleur :","Color":"Couleur","11oz":"11 oz (325 ml)",
+    "Added to cart":"Ajouté au panier","Quantity:":"Quantité :","Cart Subtotal (":"Sous-total du panier (","View Cart":"Voir le panier","Checkout":"Commander","Add to Cart":"Ajouter au panier","Size:":"Taille :","Size":"Taille","Size guide":"Guide des tailles","Size Guide":"Guide des tailles","Color:":"Couleur :","Color":"Couleur","11oz":"325 ml",
     "White":"Blanc","Black":"Noir","Natural":"Naturel","Sold out":"Épuisé","Out of stock":"En rupture de stock","Unavailable":"Indisponible","Digital download":"Téléchargement numérique",
     "More details":"Détails","Size & Fit":"Dimensions","Quality Guarantee & Returns":"Garantie qualité et retours","You may also like":"Vous aimerez aussi","All Products":"Tous les produits",
     "Ceramic mug":"Mug en céramique","Dishwasher and microwave safe":"Compatible lave-vaisselle et micro-ondes","EU GPSR Product Information:":"Informations produit (règlement européen GPSR) :","Manufacturer contact information":"Coordonnées du fabricant",
