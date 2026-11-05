@@ -104,7 +104,18 @@
   }
   /* Sous le prix : origine et délai (demande du propriétaire du 2026-11-05). Fabrication 2 à 5 jours ouvrés + 7 à 10 jours de transport
      (aide Fourthwall) : « 2 semaines environ ». Seuls les articles physiques ont le bloc GPSR ; sans lui, c'est un produit numérique. */
+  /* Sous l'adresse GPSR (celle de Fourthwall, en Californie) : explication voulue par le propriétaire le 2026-11-05, car les clients
+     simulés y voyaient une contradiction avec « Fabriqué en Europe ». Fourthwall est le vendeur officiel, pas notre maison mère. */
+  function gpsr(){
+    if(document.getElementById("mv-gpsr"))return;
+    var a=[].find.call(document.querySelectorAll("li"),function(e){return /Santa Monica/.test(e.textContent)});
+    if(!a)return;
+    var l=document.createElement("li");l.id="mv-gpsr";l.className=a.className;
+    l.textContent="Cette adresse est celle de Fourthwall, notre plateforme de vente, basée aux États-Unis : votre article est bien fabriqué en Europe.";
+    a.insertAdjacentElement("afterend",l);
+  }
   function delai(){
+    gpsr();
     var p=document.querySelector(".product-info__prices");
     if(!p||document.getElementById("mv-delai"))return;
     var d=document.createElement("p");d.id="mv-delai";d.className="mv-delai";
