@@ -114,8 +114,18 @@
     l.textContent="Cette adresse est celle de Fourthwall, notre plateforme de vente, basée aux États-Unis : votre article est bien fabriqué en Europe.";
     a.insertAdjacentElement("afterend",l);
   }
+  /* Blocs « Détails » et « Dimensions » du modèle Fourthwall : ils listent les mugs 15 et 20 oz, que nous ne vendons pas (catalogue :
+     mug 11 oz seulement). Trois clients simulés de la salve du 2026-11-05 s'y sont perdus : on les masque, et 11 oz devient 325 ml. */
+  function mugs(){
+    [].forEach.call(document.querySelectorAll("li,p"),function(e){
+      if(e.children.length)return;
+      if(/^\s*Mug (15|20) ?oz\b/i.test(e.textContent))e.style.display="none";
+      else if(/^\s*Mug 11 ?oz\s*:/i.test(e.textContent))e.textContent=e.textContent.replace(/Mug 11 ?oz/i,"Mug 325 ml");
+    });
+  }
   function delai(){
     gpsr();
+    mugs();
     var p=document.querySelector(".product-info__prices");
     if(!p||document.getElementById("mv-delai"))return;
     var d=document.createElement("p");d.id="mv-delai";d.className="mv-delai";
