@@ -49,7 +49,7 @@
   var R=[
     [/^€[\d,]+\.\d\d$/,prix],
     [/^(\d+) items? in your cart for( .*)?$/,function(m,n,p){return n+(n=="1"?" article":" articles")+" dans votre panier pour"+prix(p||"")}],
-    [/^(\d+) oz mug dimensions: [\d.]+″ \(([\d.]+) cm\) in height, [\d.]+″ \(([\d.]+) cm\) in diameter$/,function(m,o,h,d){return "Mug "+o+" oz : "+h.replace(".",",")+" cm de haut, "+d.replace(".",",")+" cm de diamètre"}],
+    [/^(\d+) oz mug dimensions: [\d.]+″ \(([\d.]+) cm\) in height, [\d.]+″ \(([\d.]+) cm\) in diameter$/,function(m,o,h,d){if(o=="11"&&d=="8.2")d="8.3";return "Mug "+o+" oz : "+h.replace(".",",")+" cm de haut, "+d.replace(".",",")+" cm de diamètre"}],
     [/^([\d.]+)″ × ([\d.]+)″$/,function(m,a,b){var c=function(x){return (Math.round(x*25.4)/10).toString().replace(".",",")};return c(a)+" × "+c(b)+" cm"}],
     [/^Name: /,"Nom : "],[/^Email: /,"E-mail : "],[/^Postal address: /,"Adresse postale : "],
     [/ product image \((\d+)\)$/,", image $1"],
