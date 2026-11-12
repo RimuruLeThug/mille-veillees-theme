@@ -140,6 +140,8 @@
     attributs(r);
     alts(r);
     /* Bandeau défilant : ses phrases sont répétées pour boucler ; un lecteur d'écran ne doit les lire qu'une fois */
+    /* Guide des tailles : Fourthwall l'ouvre en pouces ; un client français lit des centimètres (client mystère du 2026-11-12) */
+    if(r.querySelectorAll)r.querySelectorAll('[data-size="cm-button"]:not(.active)').forEach(function(b){if(!b.dataset.mvCm){b.dataset.mvCm=1;b.click()}});
     if(r.querySelector&&r.querySelector(".text-carousel__text")){var vu={};document.querySelectorAll(".text-carousel__text").forEach(function(e){var k=e.textContent.trim();if(vu[k])e.setAttribute("aria-hidden","true");else vu[k]=1})}
     var w=document.createTreeWalker(r,NodeFilter.SHOW_ELEMENT|NodeFilter.SHOW_TEXT),n;
     while(n=w.nextNode())n.nodeType==3?texte(n):attributs(n);
