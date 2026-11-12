@@ -139,9 +139,9 @@
     if(r.nodeType!=1)return;
     attributs(r);
     alts(r);
-    /* Bandeau défilant : ses phrases sont répétées pour boucler ; un lecteur d'écran ne doit les lire qu'une fois */
     /* Guide des tailles : Fourthwall l'ouvre en pouces ; un client français lit des centimètres (client mystère du 2026-11-12) */
-    if(r.querySelectorAll)r.querySelectorAll('[data-size="cm-button"]:not(.active)').forEach(function(b){if(!b.dataset.mvCm){b.dataset.mvCm=1;b.click()}});
+    if(document.readyState=="complete")enCm(r);
+    /* Bandeau défilant : ses phrases sont répétées pour boucler ; un lecteur d'écran ne doit les lire qu'une fois */
     if(r.querySelector&&r.querySelector(".text-carousel__text")){var vu={};document.querySelectorAll(".text-carousel__text").forEach(function(e){var k=e.textContent.trim();if(vu[k])e.setAttribute("aria-hidden","true");else vu[k]=1})}
     var w=document.createTreeWalker(r,NodeFilter.SHOW_ELEMENT|NodeFilter.SHOW_TEXT),n;
     while(n=w.nextNode())n.nodeType==3?texte(n):attributs(n);
@@ -154,6 +154,13 @@
     });
   }).observe(document.documentElement,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:["aria-label","placeholder","title","alt","type"]});
   balaye(document.documentElement);
+  /* Le clic n'agit qu'une fois les scripts de Fourthwall branchés : d'où la passe après « load », puis à chaque ajout */
+  function enCm(r){
+    var l=[];if(r.matches&&r.matches('[data-size="cm-button"]'))l.push(r);
+    if(r.querySelectorAll)l=l.concat([].slice.call(r.querySelectorAll('[data-size="cm-button"]')));
+    l.forEach(function(b){if(!b.dataset.mvCm&&!b.classList.contains("active")){b.dataset.mvCm=1;b.click()}});
+  }
+  if(document.readyState=="complete")enCm(document.documentElement);else addEventListener("load",function(){enCm(document.documentElement)});
   /* Les boutons de paiement express sont dessinés par Stripe : on lui demande le français. */
   function fr(Stripe){
     var f=function(c,o){
