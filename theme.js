@@ -40,7 +40,9 @@
     "Cancel":"Annuler","Delete":"Retirer","Your Shopping Cart is Empty":"Votre panier est vide","Start Shopping":"Voir les produits",
     "Open menu":"Ouvrir le menu","Close menu":"Fermer le menu","Primary":"Principal","Footer":"Pied de page","Cart":"Panier","Previous image":"Image précédente","Next image":"Image suivante","Previous thumbnails":"Miniatures précédentes","Next thumbnails":"Miniatures suivantes","Secure express checkout frame":"Paiement express sécurisé",
     "Indoor use only":"Usage en intérieur uniquement","Glossy finish":"Finition brillante","0.12″ (0.3 cm) white sticker border":"Bordure blanche de 0,3 cm",
-    "Film type: MPI 3000 Gloss HOP (EU), Promotional Monomeric PVC (US)":"Film : PVC brillant MPI 3000 Gloss HOP (Europe), PVC monomère (États-Unis)"
+    "Film type: MPI 3000 Gloss HOP (EU), Promotional Monomeric PVC (US)":"Film : PVC brillant MPI 3000 Gloss HOP",
+    /* Tapis de souris : bloc du fabricant en anglais et en pouces (client mystère, constat #370 du 2026-11-13) ; nos articles sont faits en Europe (#335) */
+    "Soft 100% polyester surface":"Dessus doux 100 % polyester","Natural rubber base":"Base en caoutchouc naturel"
   };
   /* Fourthwall affiche les prix hors taxes et ajoute la TVA du pays au paiement. En France, un particulier doit voir le prix TTC :
      on affiche le prix avec la TVA française (20 %), celle que paie un client livré en France. */
@@ -51,6 +53,8 @@
     [/^(\d+) items? in your cart for( .*)?$/,function(m,n,p){return n+(n=="1"?" article":" articles")+" dans votre panier pour"+prix(p||"")}],
     [/^(\d+) oz mug dimensions: [\d.]+″ \(([\d.]+) cm\) in height, [\d.]+″ \(([\d.]+) cm\) in diameter$/,function(m,o,h,d){if(o=="11"&&d=="8.2")d="8.3";return "Mug "+o+" oz : "+h.replace(".",",")+" cm de haut, "+d.replace(".",",")+" cm de diamètre"}],
     [/^([\d.]+)″ × ([\d.]+)″$/,function(m,a,b){var c=function(x){return (Math.round(x*25.4)/10).toString().replace(".",",")};return c(a)+" × "+c(b)+" cm"}],
+    [/^([\d.]+)" x ([\d.]+)"$/,function(m,a,b){var c=function(x){var v=x*2.54;return (v>=10?Math.round(v):Math.round(v*10)/10).toString().replace(".",",")};return c(a)+" × "+c(b)+" cm"}],
+    [/^(Size: )?[\d.]+″(?: × [\d.]+″)+ \(([\d ×]+) mm\)$/,function(m,l,mm){return (l?"Taille : ":"")+mm.split(" × ").map(function(x){return (x/10).toString().replace(".",",")}).join(" × ")+" cm"}],
     [/^Name: /,"Nom : "],[/^Email: /,"E-mail : "],[/^Postal address: /,"Adresse postale : "],
     [/ product image \((\d+)\)$/,", image $1"],
     [/^Quantity for /,"Quantité pour "],[/^Remove (.+) from cart$/,"Retirer $1 du panier"],[/^Currency selector, current: /,"Sélecteur de devise, actuelle : "],
