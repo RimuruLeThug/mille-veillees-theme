@@ -133,7 +133,7 @@
     var p=document.querySelector(".product-info__prices");
     if(!p||document.getElementById("mv-delai"))return;
     var d=document.createElement("p");d.id="mv-delai";d.className="mv-delai";
-    d.textContent=/GPSR/.test(document.body.textContent)?"🇪🇺 Fabriqué en Europe · livré en 2 semaines environ":"⬇️ Téléchargement immédiat après l'achat";
+    d.textContent=/GPSR/.test(document.body.textContent)?"🇪🇺 Fabriqué en Europe · livré en 2 semaines environ":"⬇️ Téléchargement immédiat après l'achat · à imprimer chez vous ou chez un imprimeur";
     p.insertAdjacentElement("afterend",d);
   }
   document.addEventListener("DOMContentLoaded",delai);
